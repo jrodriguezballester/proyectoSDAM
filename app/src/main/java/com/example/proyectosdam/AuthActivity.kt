@@ -1,5 +1,6 @@
 package com.example.proyectosdam
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,9 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         val view = binding.root
-        // setContentView(R.layout.activity_auth)
         setContentView(view)
-
-        setup()
+continuarApp()
+    //    setup()
     }
 
     private fun setup() {
@@ -83,10 +83,10 @@ class AuthActivity : AppCompatActivity() {
     }
 
     public fun continuarApp() {
-        Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion")
+      //  Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion")
 
-        //   val intent = Intent(this, MainActivity::class.java)
-        //    startActivity(intent)
+           val intent = Intent(this, IllActivity::class.java)
+           startActivity(intent)
     }
 
 }
