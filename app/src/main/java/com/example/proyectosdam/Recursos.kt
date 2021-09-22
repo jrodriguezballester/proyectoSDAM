@@ -21,6 +21,7 @@ class Recursos {
     //. {4,} # . cualquier caracter,{n} n lugares,{n,m} n=min, m=max
     //$ # final de cadena
     public fun isValidPassword(password: String): Boolean {
+        //minimo un numero,minuscula y masyuscula y 8 digitos
         val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
         val pattern = Regex(PASSWORD_PATTERN)
         return pattern.containsMatchIn(password)
