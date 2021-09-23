@@ -15,8 +15,12 @@ class AuthActivity : AppCompatActivity() {
         binding = ActivityAuthBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-continuarApp()
-    //    setup()
+
+        //// TODO modo pruebas
+
+        //    setup()
+        continuarApp()
+        // fin modo pruebas
     }
 
     private fun setup() {
@@ -83,10 +87,10 @@ continuarApp()
     }
 
     public fun continuarApp() {
-      //  Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion")
+        //  Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion")
 
-           val intent = Intent(this, IllActivity::class.java)
-           startActivity(intent)
+        val intent = Intent(this, IllActivity::class.java)
+        startActivity(intent)
     }
 
 }
