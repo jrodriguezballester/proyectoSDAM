@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoSDAM">
-        <activity android:name=".IllActivity"></activity>
+        <activity
+            android:name=".AddMedicineActivity"
+            android:exported="true" />
+        <activity android:name=".IllActivity" />
         <activity android:name=".AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
