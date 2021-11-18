@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,15 +22,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Medicina"
+            android:text="@string/introducir_medicacion"
             android:textSize="26sp" />
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="Paciente:" />
+            android:text="@string/paciente" />
 
         <TextView
             android:id="@+id/nombre"
@@ -37,99 +37,271 @@
             android:layout_height="wrap_content"
             android:ems="10" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/nameMedicine"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="nombre del medicamento"
-
-                android:inputType="text"
-                android:minHeight="48dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/cbDesayuno"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/txtMedicine"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margencheckbox"
-                    android:text="Desayuno" />
-
-                <CheckBox
-                    android:id="@+id/cbComida"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margencheckbox"
-                    android:text="Comida" />
-
-                <CheckBox
-                    android:id="@+id/cbCena"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margencheckbox"
-                    android:text="Cena" />
-
-                <CheckBox
-                    android:id="@+id/cbResopon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margencheckbox"
-                    android:text="Resopon" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="40dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/registerMedicineButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="registrar"
-                    android:textColor="@android:color/white" />
+                    android:ems="10"
+                    android:hint="@string/nombre_del_medicamento"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
 
                 <Space
-                    android:layout_width="8dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
 
-                <Button
-                    android:id="@+id/AccederButton"
+                <EditText
+                    android:id="@+id/txtNumComprimidos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Acceder"
-                    android:textColor="@android:color/white" />
+                    android:ems="10"
+                    android:hint="@string/unidades_por_caja"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/radioButtonGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_margin="1dp"
+                    android:visibility="visible"
+                    card_view:cardBackgroundColor="@color/white"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="10dp"
+                    card_view:cardMaxElevation="12dp"
+                    card_view:cardPreventCornerOverlap="true"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:minHeight="48dp"
+                            android:layout_weight="3"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/cbDesayuno"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margencheckbox"
+                                android:layout_weight="2"
+                                android:text="@string/desayuno" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:text="@string/pastillas"
+                                android:visibility="visible" />
+
+                            <EditText
+                                android:id="@+id/txtPastillasDesayuno"
+                                android:layout_width="@dimen/widthEdittext"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:hint="@string/numdefecto"
+                                android:inputType="number"
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575"
+                                android:visibility="visible"
+                                tools:ignore="DuplicateSpeakableTextCheck" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/cbComida"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margencheckbox"
+                                android:layout_weight="2"
+                                android:text="@string/comida" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:text="@string/pastillas"
+                                android:visibility="visible" />
+
+                            <EditText
+                                android:id="@+id/txtPastillasComida"
+                                android:layout_width="@dimen/widthEdittext"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:hint="@string/numdefecto"
+                                android:inputType="number"
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575"
+                                android:visibility="visible"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/cbCena"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margencheckbox"
+                                android:layout_weight="2"
+                                android:text="@string/cena" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:text="@string/pastillas"
+                                android:visibility="visible" />
+
+                            <EditText
+                                android:id="@+id/txtPastillasCena"
+                                android:layout_width="@dimen/widthEdittext"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:hint="@string/numdefecto"
+                                android:inputType="number"
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575"
+                                android:visibility="visible"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/cbResopon"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margencheckbox"
+                                android:layout_weight="2"
+                                android:text="@string/resopon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:text="@string/pastillas"
+                                android:visibility="visible" />
+
+                            <EditText
+                                android:id="@+id/txtPastillasResopon"
+                                android:layout_width="@dimen/widthEdittext"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:ems="12"
+                                android:hint="@string/numdefecto"
+                                android:inputType="number"
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575"
+                                android:visibility="visible"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnLimpiar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/limpiar"
+                        android:textColor="@android:color/white" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btnGuardar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/guardar"
+                        android:textColor="@android:color/white" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btn_continuar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/salir"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
 
             </LinearLayout>
-
-
-        </LinearLayout>
-
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

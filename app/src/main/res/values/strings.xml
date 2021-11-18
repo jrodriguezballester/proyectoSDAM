@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ProyectoSDAM</string>
+    <string name="introducir_medicacion">Introducir Medicacion</string>
+    <string name="desayuno">Desayuno</string>
+    <string name="nombre_del_medicamento">nombre del medicamento</string>
+    <string name="paciente">Paciente:</string>
+    <string name="unidades_por_caja">Unidades por caja</string>
+    <string name="pastillas">Pastillas:</string>
+    <string name="numdefecto">1</string>
+    <string name="comida">Comida</string>
+    <string name="cena">Cena</string>
+    <string name="resopon">Resopon</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="guardar">Guardar</string>
+    <string name="salir">salir</string>
 </resources>

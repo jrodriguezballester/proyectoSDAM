@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margencheckbox">5dp</dimen>
+    <dimen name="margencheckbox">1dp</dimen>
+    <dimen name="widthEdittext">0dp</dimen>
+
 </resources>

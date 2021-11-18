@@ -19,48 +19,41 @@ class IllActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIllBinding
     val db = Firebase.firestore
     val mRootReference = FirebaseDatabase.getInstance()
+
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIllBinding.inflate(layoutInflater)
         val view = binding.root
-        // val sip = binding.SIP.text.toString()
-        // val illName = binding.nameIll.text.toString()
-
         setContentView(view)
 
+
         binding.registerIllButton.setOnClickListener {
-            val illName = binding.nameIll.text.toString()
-            val sip = binding.SIP.text.toString()
 
-            // Create a new usuario with a nick and SIP
-            val user = hashMapOf(
-                "nick" to illName,
-                "SIP" to sip
-            )
-            val myUsuario:Paciente=Paciente()
-
-            myUsuario.nombre=illName
-            myUsuario.sip=sip
+            val myUsuario: Paciente = Paciente()
+            myUsuario.nombre = binding.nameIll.text.toString()
+            myUsuario.sip = binding.SIP.text.toString()
 
 
-            val usuario = hashMapOf<String, Any?>()
-            usuario["nick"] = illName
-            usuario["SIP"] = sip
             // guarda usuario en BD
-            db.collection("users").document(sip).set(usuario)
+
+            db.collection("users").document(myUsuario.sip!!).set(myUsuario)
                 .addOnSuccessListener {
+                    Log.e(TAG, "--------------------- Error adding document")
+
                     Toast.makeText(
                         this,
                         "REGISTRADO",
                         Toast.LENGTH_SHORT
+
                     ).show()
-                    this.continuarApp(usuario,myUsuario)
+                    this.continuarApp(myUsuario)
                 }
                 .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
+                    Log.e(TAG, "+++++++++++++++++++++++ Error adding document", e)
                 }
+
         }
 
 
@@ -82,15 +75,16 @@ class IllActivity : AppCompatActivity() {
         val usuario = hashMapOf<String, Any?>()
         usuario["medicina"] = "illName"
         usuario["SIP"] = "sip"
-     //TODO continuar en otro activity que muestre las dosis
+        //TODO continuar en otro activity que muestre las dosis
 
-    //    db.collection("users").document(sip)
-    //        .collection("Medicinas").add(usuario)
+        //    db.collection("users").document(sip)
+        //        .collection("Medicinas").add(usuario)
     }
 
 
-    public fun continuarApp(usuario: HashMap<String, Any?>, myUsuario: Paciente) {
-    //    Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion:$myid")
+    fun continuarApp(myUsuario: Paciente) {
+        Log.e(TAG, "--------------------- Continua app")
+        //    Recursos().mostrarAviso1(this, "Aviso", "Continua la aplicacion:$myid")
 
         //     val enfermo = db.collection("users").document(myid)
         // Set the "medicina" field of the city 'DC'
@@ -99,14 +93,10 @@ class IllActivity : AppCompatActivity() {
         //          .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
 
         val bundle = Bundle()
-        bundle.putSerializable("myUser", usuario)
-        bundle.putSerializable("myUser2", myUsuario)
 
+        bundle.putSerializable("myUser", myUsuario)
         val intent = Intent(this, AddMedicineActivity::class.java)
         intent.putExtras(bundle)
         startActivity(intent)
     }
 }
-
-//  val enfermo = db.collection("users").document(sip)
-//  enfermo.update("medicina", "valium")
