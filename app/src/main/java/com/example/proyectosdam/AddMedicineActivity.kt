@@ -2,6 +2,7 @@ package com.example.proyectosdam
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectosdam.databinding.ActivityAddMedicineBinding
 import com.google.firebase.firestore.ktx.firestore
@@ -14,6 +15,14 @@ class AddMedicineActivity : AppCompatActivity() {
     private lateinit var paciente: Paciente
     private lateinit var medicamento: Medicamento
 
+    private var nombre = ""
+    private var cantidad: Int = 0
+    private var dosisDesayuno: Double = 0.0
+    private var dosisComida: Double = 0.0
+    private var dosisCena: Double = 0.0
+    private var dosisResopon: Double = 0.0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMedicineBinding.inflate(layoutInflater)
@@ -21,67 +30,72 @@ class AddMedicineActivity : AppCompatActivity() {
         setContentView(view)
 
         // reccoger bundle paciente
-
         val bundle = intent.extras
         paciente = bundle!!["myUser"] as Paciente
         binding.nombre.text = paciente.nombre
 
-        binding.cbDesayuno.setOnClickListener {
-            //    binding.txtPastillasDesayuno.visibility=View.VISIBLE
-            //     binding.txtPastillasDesayuno.text="Pastillas: 1"
-            //   binding.txtCantPastillasD.visibility=View.VISIBLE
+        // Inicializar valores
+        binding.txtPastillasDesayuno.setText("0")
 
+        binding.cbDesayuno.setOnClickListener {
+            if (binding.cbDesayuno.isChecked) {
+                binding.tvDesayuno.visibility = View.VISIBLE
+                binding.txtPastillasDesayuno.visibility = View.VISIBLE
+                binding.txtPastillasDesayuno.setText("1")
+            } else {
+                binding.tvDesayuno.visibility = View.GONE
+                binding.txtPastillasDesayuno.visibility = View.GONE
+                binding.txtPastillasDesayuno.setText("0")
+            }
         }
 
-
         binding.btnLimpiar.setOnClickListener {
-
-       //     limpiar()
-
-            instanciarMedicina()
+            limpiar()
         }
 
         binding.btnGuardar.setOnClickListener {
-            Log.e("GUARDANDO", "--------------------- " + paciente.sip.toString())
-       //     instanciarMedicina()
+            Log.e("GUARDANDO", "-------- " + paciente.sip.toString())
+            instanciarMedicina()
             guardarMedicina()
         }
 
     }
 
     private fun instanciarMedicina() {
-        val nombre: String = binding.txtMedicine.text.toString()
-        val cantidad: Int = binding.txtNumComprimidos.text.toString().toInt()
-        val dosisDesayuno: Double = binding.txtPastillasDesayuno.text.toString().toDouble()
-        val dosisComida: Double = binding.txtPastillasComida.text.toString().toDouble()
-        val dosisCena: Double = binding.txtPastillasCena.text.toString().toDouble()
-        val dosisResopon: Double = binding.txtPastillasResopon.text.toString().toDouble()
-
+        // TODO FIX evitar cuadros em blanco
+        nombre = binding.txtMedicine.text.toString()
+        cantidad = binding.txtNumComprimidos.text.toString().toInt()
+        dosisDesayuno = binding.txtPastillasDesayuno.text.toString().toDouble()
+        dosisComida = binding.txtPastillasComida.text.toString().toDouble()
+        dosisCena = binding.txtPastillasCena.text.toString().toDouble()
+        dosisResopon = binding.txtPastillasResopon.text.toString().toDouble()
 
         medicamento =
             Medicamento(nombre, cantidad, dosisDesayuno, dosisComida, dosisCena, dosisResopon)
-        Log.e("GUARDANDO",
+
+        Log.e(
+            "instanciarMedicina",
             "----medicamento---- $nombre-$cantidad+$dosisDesayuno+$dosisComida+$dosisCena+$dosisResopon"
         )
-        Log.e("GUARDANDO", "----medicamento---- " + medicamento.nombre+"-"+ medicamento.numComprimidos+"+")
+        Log.e(
+            "instanciarMedicina",
+            "----medicamento---- " + medicamento.nombre + "-" + medicamento.numComprimidos
+        )
 
     }
 
     private fun guardarMedicina() {
-        /*
-        val medicina = hashMapOf<String, Any?>()
-        medicina["nombre"] = binding.txtMedicine.text
-        medicina["cantidad"] = binding.txtNumComprimidos.text
-        val messageRef = db
-            .collection("users").document(paciente.sip!!.toString())
-            .collection("medicines").document(medicina["nombre"].toString()).set(medicina)
-   */
+
+
         val medicina = hashMapOf<String, Medicamento?>()
         medicamento.nombre?.let { medicina.put(it, medicamento) }
-        val messageRef = db
-            .collection("users").document(paciente.sip!!.toString())
-            .collection("medicines").document(medicamento.nombre!!).set(medicamento)
+        db.collection("users").document(paciente.sip!!.toString())
+            .collection("medicines").document(medicamento.nombre!!.toString()).set(medicamento)
 
+        Log.e(
+            "GUARDARMEDICINA",
+            "----medicamento---- " + medicamento.nombre + "-" + medicamento.numComprimidos
+        )
     }
 
     private fun limpiar() {

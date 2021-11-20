@@ -109,13 +109,14 @@
                                 android:text="@string/desayuno" />
 
                             <TextView
+                                android:id="@+id/tvDesayuno"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <EditText
                                 android:id="@+id/txtPastillasDesayuno"
@@ -125,11 +126,9 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
                                 android:ems="12"
-                                android:hint="@string/numdefecto"
                                 android:inputType="number"
                                 android:minHeight="48dp"
-                                android:textColorHint="#757575"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 tools:ignore="DuplicateSpeakableTextCheck" />
 
                         </LinearLayout>
@@ -154,7 +153,7 @@
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <EditText
                                 android:id="@+id/txtPastillasComida"
@@ -168,7 +167,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
@@ -192,7 +191,7 @@
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <EditText
                                 android:id="@+id/txtPastillasCena"
@@ -206,7 +205,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
@@ -231,7 +230,7 @@
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <EditText
                                 android:id="@+id/txtPastillasResopon"
@@ -245,7 +244,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
