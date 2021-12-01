@@ -40,7 +40,7 @@ class IllActivity : AppCompatActivity() {
 
             db.collection("users").document(myUsuario.sip!!).set(myUsuario)
                 .addOnSuccessListener {
-                    Log.e(TAG, "--------------------- Error adding document")
+                    Log.e(TAG, "---- adding document")
 
                     Toast.makeText(
                         this,
@@ -51,9 +51,8 @@ class IllActivity : AppCompatActivity() {
                     this.continuarApp(myUsuario)
                 }
                 .addOnFailureListener { e ->
-                    Log.e(TAG, "+++++++++++++++++++++++ Error adding document", e)
+                    Log.e(TAG, "+++++++ Error adding document", e)
                 }
-
         }
 
 

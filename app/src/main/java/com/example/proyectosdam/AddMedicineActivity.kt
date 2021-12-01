@@ -35,17 +35,49 @@ class AddMedicineActivity : AppCompatActivity() {
         binding.nombre.text = paciente.nombre
 
         // Inicializar valores
-        binding.txtPastillasDesayuno.setText("0")
-
+        resetDesayuno()
+        resetComida()
+        resetCena()
+        resetResopon()
+        /*    binding.txtPastillasDesayuno.setText("0")
+            binding.txtPastillasComida.setText("0")
+            binding.txtPastillasCena.setText("0")
+            binding.txtPastillasResopon.setText("0")
+    */
         binding.cbDesayuno.setOnClickListener {
             if (binding.cbDesayuno.isChecked) {
                 binding.tvDesayuno.visibility = View.VISIBLE
                 binding.txtPastillasDesayuno.visibility = View.VISIBLE
                 binding.txtPastillasDesayuno.setText("1")
             } else {
-                binding.tvDesayuno.visibility = View.GONE
-                binding.txtPastillasDesayuno.visibility = View.GONE
-                binding.txtPastillasDesayuno.setText("0")
+                resetDesayuno()
+            }
+        }
+        binding.cbComida.setOnClickListener {
+            if (binding.cbComida.isChecked) {
+                binding.tvComida.visibility = View.VISIBLE
+                binding.txtPastillasComida.visibility = View.VISIBLE
+                binding.txtPastillasComida.setText("1")
+            } else {
+                resetComida()
+            }
+        }
+        binding.cbCena.setOnClickListener {
+            if (binding.cbCena.isChecked) {
+                binding.tvCena.visibility = View.VISIBLE
+                binding.txtPastillasCena.visibility = View.VISIBLE
+                binding.txtPastillasCena.setText("1")
+            } else {
+                resetCena()
+            }
+        }
+        binding.cbResopon.setOnClickListener {
+            if (binding.cbResopon.isChecked) {
+                binding.tvResopon.visibility = View.VISIBLE
+                binding.txtPastillasResopon.visibility = View.VISIBLE
+                binding.txtPastillasResopon.setText("1")
+            } else {
+                resetResopon()
             }
         }
 
@@ -54,11 +86,11 @@ class AddMedicineActivity : AppCompatActivity() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            Log.e("GUARDANDO", "-------- " + paciente.sip.toString())
+            Log.e("btnGuardar", "--- " + paciente.sip.toString())
             instanciarMedicina()
             guardarMedicina()
+            limpiar()
         }
-
     }
 
     private fun instanciarMedicina() {
@@ -69,14 +101,14 @@ class AddMedicineActivity : AppCompatActivity() {
         dosisComida = binding.txtPastillasComida.text.toString().toDouble()
         dosisCena = binding.txtPastillasCena.text.toString().toDouble()
         dosisResopon = binding.txtPastillasResopon.text.toString().toDouble()
+        Log.e(
+            "Datos Recogidos",
+            "----medicamento---- $nombre-$cantidad+$dosisDesayuno+$dosisComida+$dosisCena+$dosisResopon"
+        )
 
         medicamento =
             Medicamento(nombre, cantidad, dosisDesayuno, dosisComida, dosisCena, dosisResopon)
 
-        Log.e(
-            "instanciarMedicina",
-            "----medicamento---- $nombre-$cantidad+$dosisDesayuno+$dosisComida+$dosisCena+$dosisResopon"
-        )
         Log.e(
             "instanciarMedicina",
             "----medicamento---- " + medicamento.nombre + "-" + medicamento.numComprimidos
@@ -85,13 +117,10 @@ class AddMedicineActivity : AppCompatActivity() {
     }
 
     private fun guardarMedicina() {
-
-
         val medicina = hashMapOf<String, Medicamento?>()
         medicamento.nombre?.let { medicina.put(it, medicamento) }
         db.collection("users").document(paciente.sip!!.toString())
             .collection("medicines").document(medicamento.nombre!!.toString()).set(medicamento)
-
         Log.e(
             "GUARDARMEDICINA",
             "----medicamento---- " + medicamento.nombre + "-" + medicamento.numComprimidos
@@ -99,11 +128,43 @@ class AddMedicineActivity : AppCompatActivity() {
     }
 
     private fun limpiar() {
+        // TODO LIMPIAR BIEN
         binding.txtMedicine.setText("")
         binding.txtNumComprimidos.setText("")
+
         binding.cbDesayuno.isChecked = false
         binding.cbComida.isChecked = false
         binding.cbCena.isChecked = false
         binding.cbResopon.isChecked = false
+
+        resetDesayuno()
+        resetComida()
+        resetCena()
+        resetResopon()
     }
+
+    private fun resetResopon() {
+        binding.tvResopon.visibility = View.INVISIBLE
+        binding.txtPastillasResopon.visibility = View.INVISIBLE
+        binding.txtPastillasResopon.setText("0")
+    }
+
+    private fun resetCena() {
+        binding.tvCena.visibility = View.INVISIBLE
+        binding.txtPastillasCena.visibility = View.INVISIBLE
+        binding.txtPastillasCena.setText("0")
+    }
+
+    private fun resetComida() {
+        binding.tvComida.visibility = View.INVISIBLE
+        binding.txtPastillasComida.visibility = View.INVISIBLE
+        binding.txtPastillasComida.setText("0")
+    }
+
+    private fun resetDesayuno() {
+        binding.tvDesayuno.visibility = View.INVISIBLE
+        binding.txtPastillasDesayuno.visibility = View.INVISIBLE
+        binding.txtPastillasDesayuno.setText("0")
+    }
+
 }

@@ -10,7 +10,8 @@
     <string name="comida">Comida</string>
     <string name="cena">Cena</string>
     <string name="resopon">Resopon</string>
-    <string name="limpiar">Limpiar</string>
+    <string name="cancelar">Cancelar</string>
     <string name="guardar">Guardar</string>
     <string name="salir">salir</string>
+
 </resources>

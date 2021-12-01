@@ -116,7 +116,7 @@
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="gone" />
+                                android:visibility="invisible" />
 
                             <EditText
                                 android:id="@+id/txtPastillasDesayuno"
@@ -128,7 +128,7 @@
                                 android:ems="12"
                                 android:inputType="number"
                                 android:minHeight="48dp"
-                                android:visibility="gone"
+                                android:visibility="invisible"
                                 tools:ignore="DuplicateSpeakableTextCheck" />
 
                         </LinearLayout>
@@ -147,13 +147,14 @@
                                 android:text="@string/comida" />
 
                             <TextView
+                                android:id="@+id/tvComida"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="gone" />
+                                android:visibility="invisible" />
 
                             <EditText
                                 android:id="@+id/txtPastillasComida"
@@ -167,7 +168,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="gone"
+                                android:visibility="invisible"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
@@ -185,13 +186,14 @@
                                 android:text="@string/cena" />
 
                             <TextView
+                                android:id="@+id/tvCena"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="gone" />
+                                android:visibility="invisible" />
 
                             <EditText
                                 android:id="@+id/txtPastillasCena"
@@ -205,7 +207,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="gone"
+                                android:visibility="invisible"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
@@ -224,13 +226,14 @@
                                 android:text="@string/resopon" />
 
                             <TextView
+                                android:id="@+id/tvResopon"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
                                 android:ems="12"
                                 android:text="@string/pastillas"
-                                android:visibility="gone" />
+                                android:visibility="invisible" />
 
                             <EditText
                                 android:id="@+id/txtPastillasResopon"
@@ -244,7 +247,7 @@
                                 android:inputType="number"
                                 android:minHeight="48dp"
                                 android:textColorHint="#757575"
-                                android:visibility="gone"
+                                android:visibility="invisible"
                                 tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
 
@@ -263,7 +266,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/limpiar"
+                        android:text="@string/cancelar"
                         android:textColor="@android:color/white" />
 
                     <Space

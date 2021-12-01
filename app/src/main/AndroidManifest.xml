@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoSDAM">
         <activity
+            android:name=".ListMedicineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/Theme.ProyectoSDAM.NoActionBar" />
+        <activity
             android:name=".AddMedicineActivity"
             android:exported="true" />
         <activity android:name=".IllActivity" />
