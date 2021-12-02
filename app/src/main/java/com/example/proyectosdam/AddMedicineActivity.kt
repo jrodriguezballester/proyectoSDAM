@@ -1,5 +1,6 @@
 package com.example.proyectosdam
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -39,11 +40,7 @@ class AddMedicineActivity : AppCompatActivity() {
         resetComida()
         resetCena()
         resetResopon()
-        /*    binding.txtPastillasDesayuno.setText("0")
-            binding.txtPastillasComida.setText("0")
-            binding.txtPastillasCena.setText("0")
-            binding.txtPastillasResopon.setText("0")
-    */
+
         binding.cbDesayuno.setOnClickListener {
             if (binding.cbDesayuno.isChecked) {
                 binding.tvDesayuno.visibility = View.VISIBLE
@@ -90,6 +87,15 @@ class AddMedicineActivity : AppCompatActivity() {
             instanciarMedicina()
             guardarMedicina()
             limpiar()
+        }
+
+        binding.btnContinuar.setOnClickListener{
+            val bundle = Bundle()
+
+            bundle.putSerializable("myUser", paciente)
+            val intent = Intent(this, ListMedicineActivity::class.java)
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
     }
 

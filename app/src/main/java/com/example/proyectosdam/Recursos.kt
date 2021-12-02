@@ -1,8 +1,10 @@
 package com.example.proyectosdam
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.text.TextUtils
+import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AlertDialog
 
@@ -29,29 +31,36 @@ class Recursos {
 
     public fun mostrarAviso2(contex: Context) {
 
-        AlertDialog.Builder(contex)
-            .setTitle("Titulo del diálogo")
-            .setMessage("Contenido del diálogo.")
-            .setPositiveButton(android.R.string.ok,
+        AlertDialog.Builder(contex).setTitle("Titulo del diálogo")
+            .setMessage("Contenido del diálogo.").setPositiveButton(
+                android.R.string.ok,
                 DialogInterface.OnClickListener { dialog, which ->
                     //botón OK pulsado
-                })
-            .setNegativeButton(android.R.string.cancel,
+                }).setNegativeButton(
+                android.R.string.cancel,
                 DialogInterface.OnClickListener { dialog, which ->
                     //botón cancel pulsado
-                })
-            .show()
+                }).show()
 
     }
 
     public fun mostrarAviso1(contex: Context, titulo: String, mensaje: String) {
-        AlertDialog.Builder(contex)
-            .setTitle(titulo)
-            .setMessage(mensaje)
-            .setPositiveButton(android.R.string.ok,
+        AlertDialog.Builder(contex).setTitle(titulo).setMessage(mensaje).setPositiveButton(
+                android.R.string.ok,
                 DialogInterface.OnClickListener { dialog, which ->
                     //botón OK pulsado
-                })
-            .show()
+                }).show()
+    }
+
+    public fun debugLista(list: List<Medicina>) {
+        Log.e(ContentValues.TAG, "longitud lista medicamentos ::${list.size} ")
+        list.forEach { medicamento ->
+            Log.e(
+                ContentValues.TAG, "Lista::${medicamento.nombre} => ${medicamento.numComprimidos}"
+            )
+        }
+    }
+    fun debugMedicina(medicina: Medicina?) {
+        Log.e(ContentValues.TAG, "Objeto recogido ::${medicina?.nombre} => ${medicina?.numComprimidos}")
     }
 }
