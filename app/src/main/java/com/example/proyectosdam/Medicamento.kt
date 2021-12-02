@@ -14,10 +14,28 @@ class Medicamento : Serializable {
     @Expose
     var numComprimidos: Int? = null
 
-    @SerializedName("dosis")
+    @SerializedName("dosisDesayuno")
     @Expose
-    var dosis: List<Double> = emptyList()
+    var dosisDesayuno: Double? = null
 
+    @SerializedName("dosisComida")
+    @Expose
+    var dosisComida: Double? = null
+
+    @SerializedName("dosisCena")
+    @Expose
+    var dosisCena: Double? = null
+
+    @SerializedName("dosisResopon")
+    @Expose
+    var dosisResopon: Double? = null
+
+
+    /*
+        @SerializedName("dosis")
+        @Expose
+        var dosis: List<Double> = emptyList()
+    */
     constructor(
         nombre: String?,
         numComprimidos: Int?,
@@ -28,7 +46,13 @@ class Medicamento : Serializable {
     ) {
         this.nombre = nombre
         this.numComprimidos = numComprimidos
-        this.dosis = listOf(dosisDesayuno, dosisComida, dosisCena, dosisResopon)
+        this.dosisDesayuno = dosisDesayuno
+        this.dosisComida = dosisComida
+        this.dosisCena = dosisCena
+        this.dosisResopon = dosisResopon
+
+        //  this.dosis = listOf(dosisDesayuno, dosisComida, dosisCena, dosisResopon)
+
     }
 
     constructor()

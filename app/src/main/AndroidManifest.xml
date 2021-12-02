@@ -12,11 +12,7 @@
         <activity
             android:name=".ListMedicineActivity"
             android:exported="false" />
-        <activity
-            android:name=".ScrollingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.ProyectoSDAM.NoActionBar" />
+
         <activity
             android:name=".AddMedicineActivity"
             android:exported="true" />
